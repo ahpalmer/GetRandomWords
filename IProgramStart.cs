@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GetRandomWords;
 
-internal interface IProgramStart
+public interface IProgramStart
 {
-    void Start();
+    Task StartAsync();
 }

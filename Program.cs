@@ -2,16 +2,18 @@
 
 namespace GetRandomWords;
 
-class Program
+public class Program
 {
-    static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var serviceProvider = new ServiceCollection()
             .AddSingleton<IProgramStart, ProgramStart>()
             .BuildServiceProvider();
 
         var service = serviceProvider.GetService<IProgramStart>()!;
-        service.Start();
-
+        if (service != null)
+        {
+            await service.StartAsync();
+        }
     }
 }

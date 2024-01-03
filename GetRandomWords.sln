@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetRandomWords", "GetRandomWords.csproj", "{8129ABBC-1C64-4285-8EC9-5A70B610123D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetRandomWords", "GetRandomWords.csproj", "{8129ABBC-1C64-4285-8EC9-5A70B610123D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetRandomWordsUnitTest", "..\GetRandomWordsUnitTest\GetRandomWordsUnitTest.csproj", "{9A70552E-8AA1-479D-81E7-02DABA9A39E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{8129ABBC-1C64-4285-8EC9-5A70B610123D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8129ABBC-1C64-4285-8EC9-5A70B610123D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8129ABBC-1C64-4285-8EC9-5A70B610123D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A70552E-8AA1-479D-81E7-02DABA9A39E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A70552E-8AA1-479D-81E7-02DABA9A39E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A70552E-8AA1-479D-81E7-02DABA9A39E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A70552E-8AA1-479D-81E7-02DABA9A39E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

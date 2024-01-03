@@ -1,8 +1,14 @@
-﻿namespace GetRandomWords;
+﻿using System.Text.Json.Serialization;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+using System.Net.Http.Json;
+using System.Text;
+
+namespace GetRandomWords;
 
 public class ProgramStart : IProgramStart
 {
-    public void Start()
+    public async Task StartAsync()
     {
         Console.WriteLine("How many random words do you want?");
         //Get an input from the console from the user
@@ -18,20 +24,21 @@ public class ProgramStart : IProgramStart
 
             for(int i = 0; i < number; i++)
             {
-                string randomWord = GetRandomWord();
-                wordList.Add(randomWord);
+                string word = await GetRandomWord();
+                wordList.Add(word);
             }
-            Console.WriteLine();
 
+            var wordString = wordList.Aggregate("", (current, next) => current + next);
+            var newWordString = RemoveBrackets(wordString);
+            Console.WriteLine(newWordString);
         }
         catch(Exception ex)
         {
             Console.WriteLine(ex);
-            Start();
         }
     }
 
-    public static async Task GetRandomWord()
+    public static async Task<string> GetRandomWord()
     {
         string url = "https://random-word-api.herokuapp.com/word";
 
@@ -41,12 +48,27 @@ public class ProgramStart : IProgramStart
             {
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
-                string word = await response.Content.ReadAsStringAsync();
+                var answer = await response.Content.ReadAsStringAsync();
+                return answer;
             }
-            catch(HttpRequestException e)
+            catch(HttpRequestException ex)
             {
-                Console.WriteLine($"Request exception: {e.Message}");
+                Console.WriteLine($"Request exception: {ex.Message}");
+                return $"Exception: {ex.Message}";
             }
         }
+    }
+
+    public static string RemoveBrackets(string word)
+    {
+        var sb = new StringBuilder();
+        foreach (char c in word)
+        {
+            if (!char.IsPunctuation(c))
+                sb.Append(c);
+        }
+
+        string answer = sb.ToString();
+        return answer;
     }
 }
